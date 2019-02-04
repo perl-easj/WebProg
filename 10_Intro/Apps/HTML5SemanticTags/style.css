@@ -1,0 +1,95 @@
+
+root { 
+    display: block;
+}
+
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    text-align: center;
+}
+
+h1{
+    font: bold 20px Tahoma;
+    color: #990033
+}
+
+h2{
+    font: bold 14px Tahoma;
+    
+}
+
+#big_wrapper{
+    border: 1px solid black;
+    width: 1000px;
+    margin: 25px auto;
+    text-align: left;
+}
+
+#top_header{
+    background: #6666ff;
+    border: 1px solid black;
+    padding: 10px; 
+}
+
+#top_header h1{
+    font: bold 20px Tahoma;
+    color: #ffffff;
+}
+
+#top_header h2{
+    font: bold 14px Tahoma;
+    color: #ccccff
+}
+
+#top_menu{
+    background: #ccccff;
+    color: #000066;
+}
+
+#top_menu li{
+    display: inline-block;
+    list-style: none;
+    padding: 5px;
+    font: bold 14px tahoma;
+}
+
+#main_section{
+    float: left;
+    width: 660px;
+    margin: 30px;
+}
+
+#aside_news{
+    border: 1px solid #990033;
+    float: left;
+    width: 200px;
+    margin: 30px 0px;
+    padding: 30px;
+    background: #ff9999
+}
+#aside_news p:first-child{
+    font: bold 14px Tahoma;
+    color: #990033;
+}
+
+#footer{
+    clear: both; /*reset to default layout */
+    text-align: center;
+    padding: 20px;
+    border-top: 2px solid #990033 
+}
+
+article{
+    background: #ffcccc;
+    border: 1px solid #990033;
+    padding: 20px;
+    margin-bottom: 15px; 
+}
+
+article footer{
+    text-align: right;
+}

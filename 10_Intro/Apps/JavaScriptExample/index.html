@@ -1,0 +1,54 @@
+<!--
+Small demo of JavaScript for event handling.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Small JavaScript demo</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <style type="text/css">
+            button { 
+                color: green; 
+                font-size: 96px;
+                font-weight: bold;
+                margin: 20px; 
+            }
+            p { 
+                color: darkslategrey; 
+                font-family: Tahoma;
+                font-size: 48px;
+                font-weight: bold;
+                margin: 20px; 
+            }
+        </style>            
+        <script type="text/javascript">
+            function ButtonAClickHandler() {
+                var textArea = document.querySelector('#TextArea');
+                var dateObj = new Date();
+                textArea.innerHTML = dateObj.toDateString();
+            }
+
+            function ButtonBClickHandler() {
+                var textArea = document.querySelector('#TextArea');
+                textArea.innerHTML = "You clicked B";
+            }
+
+            function SetupEventHandling() {
+                var butA = document.querySelector('#ButA');
+                var butB = document.querySelector('#ButB');
+
+                butA.onclick = ButtonAClickHandler;
+                butB.onclick = ButtonBClickHandler;
+            }
+
+            window.onload = SetupEventHandling;
+        </script>
+    </head>
+    <body>
+        <div>
+            <button id="ButA">A</button>
+            <button id="ButB">B</button>
+            <p id="TextArea">Press a button...</p>
+        </div>
+    </body>
+</html>
