@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Bootstrap Images</title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+         
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.2.1/slate/bootstrap.min.css">
+        <style>
+                              
+            @media (max-width: 767px) {  
+                    .smallImg{display:none;}
+                    .mediumImg{display:none;}
+                    .largeImg {display:none;} 
+            }
+          
+            @media (min-width: 767px) and (max-width: 991px) { 
+                    .extraSmallImg{display:none;}
+                    .mediumImg{display:none;}
+                    .largeImg {display:none;} 
+            }
+
+            @media (min-width: 991px) and (max-width: 1199px) { 
+                    .extraSmallImg{display:none;}
+                    .smallImg{display:none;}
+                    .largeImg {display:none;} 
+            }
+
+            @media (min-width: 1199px) {
+                    .extraSmallImg{display:none;}
+                    .smallImg{display:none;}
+                    .mediumImg {display:none;}
+            }
+        </style>
+    </head>
+    <body>      
+        <div class="jumbotron">
+            <h1>Demonstration of Bootstrap</h1>      
+            <p>This page demonstrate the Jumbotron, the Bootstrap Image incl. Gallery, Carousel, Responsive Image and Embeds.</p>
+        </div> 
+        <div class="navbar navbar-expand-lg" >
+                <ul class="nav navbar-nav">
+                    <li class= "nav-item"><a class="nav-link" href="Page1-Typography.html">Typography</a></li>
+                    <li class= "nav-item"><a class="nav-link" href="Page2-Table.html">Tables</a></li>
+                    <li class= "nav-item"><a class="nav-link" href="Page3-Image.html">Image</a></li>
+                    <li class= "nav-item"><a class="nav-link" href="Page4-Buttons.html">Buttons</a></li>
+                    <li class= "nav-item"><a class="nav-link" href="Page5-Grids.html">Grids</a></li>
+                </ul>
+        </div>
+        <br>
+        <div class="container">
+            <h2>Rounded Corners</h2>
+            <p>The <mark>.rounded</mark> class adds rounded corners to an image (not available in IE8):</p>            
+            <img src="Image/HTML5.jpg" class="rounded" alt="HTML5" width="304" height="236"> 
+        </div>
+        <br>
+        <div class="container">
+            <h2>Circle</h2>
+            <p>The <mark>.rounded-circle</mark> class shapes the image to a circle (not available in IE8):</p>            
+            <img src="Image/HTML5.jpg" class="rounded-circle" alt="HTML5" width="304" height="236"> 
+        </div>
+        <br>
+        <div class="container">
+            <h2>Thumbnail</h2>
+            <p>The <mark>.img-thumbnail</mark> class creates a thumbnail of the image:</p>            
+            <img src="Image/html_css_js_bootstrap.png" class="img-thumbnail" alt="html_css_js_bootstrap" width="304" height="236"> 
+        </div>
+        <br>
+        <div class="container">
+            <h2>Image</h2>
+            <p>The <mark>.img-fluid</mark> class makes the image scale nicely to the parent element (resize the browser window to see the effect):</p>
+            <img class="img-fluid" src="Image/Domkirke.jpg" alt="Roskilde Domkirke" width="560" height="445"> 
+        </div>
+        <br>
+        <div class="container">
+            <h2>Image Gallery</h2>
+            <p>The .thumbnail class can be used to display an image gallery. Click on the images to see it in full size:</p>            
+            <div class="row">
+                <div class="col-md-4">
+                    <a href="Image/HTML5_logo.png" class="thumbnail">
+                        <p>HTML5: A core technology markup language of the Internet used for structuring and presenting content for the World Wide Web</p>    
+                        <img src="Image/HTML5_logo.png" alt="HTML5" style="width:150px;height:150px">
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="Image/css3.png" class="thumbnail">
+                        <p>CSS3: An abbreviation for Cascading Style Sheets, level 3, a declarative stylesheet language for structured documents</p>
+                        <img src="Image/css3.png" alt="CSS3" style="width:150px;height:150px">
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="Image/js.png" class="thumbnail">
+                        <p>JavaScript: A dynamic computer programming language. It is most commonly used as part of Web browsers ...</p>      
+                        <img src="Image/js.png" alt="JavaScript" style="width:150px;height:150px">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container">
+            <h2>Responsive Embed</h2>
+            <p>Images comes in all sizes. So do screens. Responsive images automatically adjust to fit the size of the screen. Create responsive images by adding an <mark>.img-responsive</mark> class to the <code>&lt;img&gt;</code> tag. The image will then scale nicely to the parent element.</p>
+            <div class="embed-responsive embed-responsive-16by9">
+                <embed class="embed-responsive-item" src="http://www.youtube.com/embed/Mk3qkQROb_k">
+            </div>
+        </div>
+        <br>
+        <div class="container">
+            <h2>Switching images using d-none and d-blok class</h2>
+            <p>The Images exists in 3 cutted versions - only one is visible depending on the screen size.</p>
+                <div class="d-block d-sm-none">  
+                    <img class="img-fluid" src="Image/stevnsSmall.jpg" />    <!--Mobile-->
+                </div>
+                <div class="d-none d-sm-block d-md-none">
+                    <img class="img-fluid" src="Image/stevnsMedium.jpg" />   <!--Tab-->
+                </div>
+                <div class="d-none d-md-block d-lg-none">
+                    <img class="img-fluid" src="Image/stevnsLarge.jpg" />   <!--Desktop-->
+                </div>
+                <div class="d-none d-lg-block">
+                    <img class="img-fluid" src="Image/stevns1.jpg" />  <!--Large-->
+                </div>     
+        </div>
+        <br>
+        <div class="container">
+            <h2>Switching images using Media Query to change the visibility of the Image.</h2>
+                <p>The Images exists in 3 cutted versions - only one is visible depending on the screen size.</p>  
+                    <div>
+                        <img class="extraSmallImg img-fluid" src="Image/stevnsSmall.jpg" />    <!--Mobile-->
+                        <img class="smallImg img-fluid" src="Image/stevnsMedium.jpg" />   <!--Tab-->
+                        <img class="mediumImg img-fluid" src="Image/stevnsLarge.jpg" />   <!--Desktop-->
+                        <img class="largeImg img-fluid" src="Image/stevns1.jpg" />  <!--Large-->
+                    </div>
+        </div>
+        <br>
+        <div class="container">
+            <h2>The Carousel Plugin</h2>
+            <p>The Carousel plugin is a component for cycling through elements, like a carousel (slideshow). This plugin is included in "bootstrap.js" (or in the minified "bootstrap.min.js" file).</p>
+            
+        
+        <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel">
+                <ol class="carousel-indicators">
+                  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                </ol>
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="Image/Domkirke.jpg" class="mx-auto d-block w-50" alt="...">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="Image/Domkirke2.jpg" class="mx-auto d-block w-50" alt="...">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="Image/Domkirke3.jpg" class="mx-auto d-block w-50" alt="...">
+                  </div>
+                  <div class="carousel-item">
+                        <img src="Image/Domkirke4.jpg" class="mx-auto d-block w-50" alt="...">
+                      </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
+            
+        <br>
+        <br>
+        <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                  <li data-target="#carouselExampleIndicators2" data-slide-to="0" class="active"></li>
+                  <li data-target="#carouselExampleIndicators2" data-slide-to="1"></li>
+                  <li data-target="#carouselExampleIndicators2" data-slide-to="2"></li>
+                  <li data-target="#carouselExampleIndicators2" data-slide-to="3"></li>
+                </ol>
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="Image/Domkirke.jpg" class="mx-auto d-block w-75" alt="...">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="Image/Domkirke2.jpg" class="mx-auto d-block w-75" alt="...">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="Image/Domkirke3.jpg" class="mx-auto d-block w-75" alt="...">
+                  </div>
+                  <div class="carousel-item">
+                        <img src="Image/Domkirke4.jpg" class="mx-auto d-block w-75" alt="...">
+                      </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators2" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators2" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
+            </div>
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    </body>
+</html>
