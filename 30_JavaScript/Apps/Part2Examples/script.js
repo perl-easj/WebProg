@@ -3,7 +3,7 @@
 var emptyObj = {};
 
 
-// A "Person" object (NB: The is no Person class...)
+// A "Person" object (NB: There is no Person class...)
 // Note the comma-separation used for object literals
 var personA = {
     firstName : "Per",
@@ -39,7 +39,7 @@ var personA = {
     }
 };
 
-// A "Person" object (NB: The is no Person class...)
+// A "Person" object (NB: There is no Person class...)
 // Note the comma-separation used for object literals
 var personB = {
     firstName : "Anne",
