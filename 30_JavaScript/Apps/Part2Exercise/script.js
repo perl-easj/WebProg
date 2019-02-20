@@ -1,0 +1,1 @@
+// Add your own code for creation of Hero and Beast objects.
