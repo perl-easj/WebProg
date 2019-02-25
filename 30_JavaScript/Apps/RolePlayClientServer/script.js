@@ -160,6 +160,8 @@ class UITextGeneratorEnglish {
     }
 }
 
+// This class maps user actions to calls to the server-side API,
+// by appending a specific path to the server URL.
 class GameServerConnection {
     constructor(serverURL) {
         this.serverURL = serverURL;
