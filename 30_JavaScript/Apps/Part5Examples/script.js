@@ -4,7 +4,7 @@
 // });
 
 // promise
-//   .then(()=>console.log("I am done"))          //callback, udføres ved resolved
+//   .then(()=>console.log("I am done"))          //callback, done when resolved
 //   .then(()=>console.log("I was also called"))  
 //   .catch(() => console.log("uh oh!!"))
 
