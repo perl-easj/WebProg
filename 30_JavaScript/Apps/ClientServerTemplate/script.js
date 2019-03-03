@@ -56,9 +56,9 @@ class ServerConnection {
 }
 
 class ClientLauncher {
-    static launch() {
+    static launch(aServerURL) {
         // Sets up server connection
-        var theServerConnection = new ServerConnection('http://127.0.0.1:1337');
+        var theServerConnection = new ServerConnection(aServerURL);     
         var theClientUIManager = new ClientUIManager();
 
         // Sets up handlers, which will be activated when a response
@@ -78,9 +78,11 @@ class ClientLauncher {
     }
 }
 
+var localServerURL = 'http://127.0.0.1:1337';
+var azureServerURL = 'http://roleplayonazure.azurewebsites.net';
 
 // Client setup
 //
 window.onload = function() {
-    ClientLauncher.launch();
+    ClientLauncher.launch(localServerURL);
 }

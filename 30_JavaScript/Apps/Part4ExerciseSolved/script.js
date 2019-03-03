@@ -41,7 +41,7 @@ var greetEnFunc = buildGreetingFunc("en");
 var greetFrFunc = buildGreetingFunc("fr");
 
 greetDkFunc("Arne", "Bendtsen")
-greetDkFunc("Carol", "Dalton");
+greetEnFunc("Carol", "Dalton");
 greetFrFunc("Eric", "Favreaux");
 
 

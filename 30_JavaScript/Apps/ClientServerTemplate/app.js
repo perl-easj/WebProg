@@ -24,11 +24,11 @@ class RoutingHandler {
     }
 }
 
-
-
 // Server setup
 var http = require('http');
 var theServerState = new ServerState();
+var portNo = 1337;
+var hostURL = '127.0.0.1';
 
 http.createServer(function (req, res) {
     // Header setup
@@ -40,4 +40,4 @@ http.createServer(function (req, res) {
 
     // Send server state back to client
     res.end(JSON.stringify(theServerState)); 
-}).listen(1337, '127.0.0.1');
+}).listen(portNo, hostURL);
