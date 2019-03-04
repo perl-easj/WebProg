@@ -6,26 +6,42 @@ class ServerState {
     }
 }
 
+class WebServiceAPI {
+    constructor(prefix) {
+        this.A = prefix + "/A";
+        this.B = prefix + "/B";
+        this.C = prefix + "/C";
+        this.Reset = prefix + "/Reset";
+        this.Get = prefix + "/Get";
+    }
+}
+
 class RoutingHandler {
-    static doRouting(url, aServerState) {
+    static doRouting(url, wsAPI, aServerState) {
         // Routing
-        if (url === "/A") {
+        if (url === wsAPI.A) {
             aServerState.stateA++;
         }
-        if (url === "/B") {
+        if (url === wsAPI.B) {
             aServerState.stateB++;
         }
-        if (url === "/C") {
+        if (url === wsAPI.C) {
             aServerState.stateC++;
         }
+        if (url === wsAPI.Reset) {
+            aServerState.stateA = 0;
+            aServerState.stateB = 0;
+            aServerState.stateC = 0;
+        }
         else {
-            // No action
+            // No action, includes "Get"
         }
     }
 }
 
 // Server setup
 var http = require('http');
+var theWsAPI = new WebServiceAPI("/api");
 var theServerState = new ServerState();
 var portNo = 1337;
 var hostURL = '127.0.0.1';
@@ -36,7 +52,7 @@ http.createServer(function (req, res) {
     res.writeHead(200, {'Content-Type': 'application/json'});
 
     // Routing
-    RoutingHandler.doRouting(req.url, theServerState);
+    RoutingHandler.doRouting(req.url, theWsAPI, theServerState);
 
     // Send server state back to client
     res.end(JSON.stringify(theServerState)); 
