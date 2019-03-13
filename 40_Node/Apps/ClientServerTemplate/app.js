@@ -6,6 +6,12 @@ class ServerState {
     }
 }
 
+// This is the Web API
+// /api/A :  Increment A
+// /api/B :  Increment B
+// /api/C :  Increment C
+// /api/Reset :  Set all values to 0 (zero)
+// /api/Get :  Get all values
 class WebServiceAPI {
     constructor(prefix) {
         this.A = prefix + "/A";

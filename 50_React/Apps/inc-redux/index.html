@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="theme-color" content="#000000" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+  <title>Redux counter App</title>
+</head>
+
+<body>
+  <div class="ui container">
+    <h1>Counter App</h1>
+    <!-- Note that store.dispatch(...) is invoked on the onClick event -->
+    <button class="ui huge button green" onClick="store.dispatch(increment())">
+      Increment
+    </button>
+    <!-- Note that store.dispatch(...) is invoked on the onClick event -->
+    <button class="ui huge button red" onClick="store.dispatch(decrement())">
+      Decrement
+    </button>
+    <!-- Here is the value we update when invoking renderNow() -->
+    <h2>Current count: <span id="value">0</span></h2>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.0.1/redux.js"></script>
+  <script src="index.js"></script>
+</body>
+
+</html>
