@@ -19,6 +19,7 @@ class App extends React.Component {
     // Note that the state is updated using this.setState(...).
     getData = async () => {
         const response = await axios.get("https://ergast.com/api/f1/2018/drivers.json");
+        //this.state.drivers =  response.data.MRData.DriverTable.Drivers; // DON'T!!
         this.setState({ drivers: response.data.MRData.DriverTable.Drivers });
     };
 

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="theme-color" content="#000000" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+
+  <title>Redux color App</title>
+</head>
+
+<body>
+  <div>
+    <div class="ui segment">
+      <a id="value" class="ui red label massive">;-)</a>
+      <br/><br/>
+      <button class="ui red button" onClick="store.dispatch(red())">Red</button>
+      <button class="ui blue button" onClick="store.dispatch(blue())">Blue</button>
+      <button class="ui green button" onClick="store.dispatch(green())">Green</button>
+    </div>
+  </div>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.0.1/redux.js"></script>
+  <script src="index.js"></script>
+</body>
+
+</html>

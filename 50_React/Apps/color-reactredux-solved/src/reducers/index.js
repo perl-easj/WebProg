@@ -5,18 +5,19 @@
 
 import { combineReducers } from 'redux';
 
-const initialState = 0;
+const initialState = "ui label massive red";
 
 // The single reducer used in this App
-const countReducer = (count = initialState, action) => {
-    if (action.type === 'INCREMENT') { return count + 1; }
-    if (action.type === 'DECREMENT') { return count - 1; }
-    return count;
+const colorReducer = (colorStyle = initialState, action) => {
+    if (action.type === 'RED') { return "ui label massive red"; }
+    if (action.type === 'BLUE') { return "ui label massive blue"; }
+    if (action.type === 'GREEN') { return "ui label massive green"; }
+    return colorStyle;
 };
 
 
 // Due to this definition, the counter value will be 
 // available as a "count" property on the state object.
 export default combineReducers({
-    count : countReducer
+    colorStyle : colorReducer,
 });
