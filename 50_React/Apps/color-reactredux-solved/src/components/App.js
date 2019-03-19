@@ -15,11 +15,11 @@ import { blue } from "../actions";
 const App = props => {
   return (
     <div className="ui segment">
-      <a id="value" className="ui red label massive">;-)</a>
+      <h1 id="value" className={props.colorStyle}>;-)</h1>
       <br/><br/>
-      <button className="ui red button" onClick="store.dispatch(red())">Red</button>
-      <button className="ui blue button" onClick="store.dispatch(blue())">Blue</button>
-      <button className="ui green button" onClick="store.dispatch(green())">Green</button>
+      <button className="ui red button" onClick={() => props.red()}>Red</button>
+      <button className="ui blue button" onClick={() => props.blue()}>Blue</button>
+      <button className="ui green button" onClick={() => props.green()}>Green</button>
     </div>     
   );
 };
