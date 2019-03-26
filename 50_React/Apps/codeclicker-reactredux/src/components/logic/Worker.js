@@ -2,17 +2,17 @@ import {baseMultiplier} from "../data/GameData";
 import {workerData} from "../data/WorkerData";
 
 export class WorkerBase {
-    constructor(workerType, workerId, basePrice, baseLOCS) {
+    constructor(id, workerType, basePrice, baseLOCS) {
+        this.id = id;
         this.workerType = workerType;
-        this.workerId = workerId;
         this.basePrice = basePrice;
         this.baseLOCS = baseLOCS;
       }
 }
 
 export class WorkerInGame extends WorkerBase {
-    constructor(workerType, workerId, basePrice, baseLOCS, noOwned = 0) {
-        super(workerType, workerId, basePrice, baseLOCS)
+    constructor(id, workerType, basePrice, baseLOCS, noOwned = 0) {
+        super(id, workerType, basePrice, baseLOCS)
         this.noOwned = noOwned;
       }
 
@@ -21,11 +21,11 @@ export class WorkerInGame extends WorkerBase {
     }
 
     getBoostedBaseLOCS(boostersInGame) {
-        return this.baseLOCS * boostersInGame.getTotalBoostFactor(this.workerType);
+        return this.baseLOCS * boostersInGame.getTotalBoostFactor(this.id);
     }
 
     getBoostedLOCS(boostersInGame) {
-        return this.getLOCS() * boostersInGame.getTotalBoostFactor(this.workerType);
+        return this.getLOCS() * boostersInGame.getTotalBoostFactor(this.id);
     }
 
     getPrice() {
@@ -34,58 +34,21 @@ export class WorkerInGame extends WorkerBase {
 }
 
 export class WorkersInGame {
-    constructor() {
+    constructor(useSeedData = true) {
         this.workersInGame = [];
-
-        this.workersInGame = [];
-        workerData.forEach(wData => {
-            this.workersInGame.push(new WorkerInGame(
-                wData.workerType, 
-                wData.wid, 
-                wData.price, 
-                wData.locs));   
-        });
-    }
-
-    getWorker(workerType) {
-        return this.workersInGame.find(w => w.workerType === workerType);
-    }
-
-    getNoOwned(workerType) {
-        var worker = this.getWorker(workerType);
-        return worker ? worker.noOwned : -1;
-    }
-
-    getPrice(workerType) {
-        var worker = this.getWorker(workerType);
-        return worker ? worker.getPrice() : -1;
-    }
-
-    getBaseLOCS(workerType) {
-        var worker = this.getWorker(workerType);
-        return worker ? worker.baseLOCS : -1;
-    }
-
-    getLOCS(workerType) {
-        var worker = this.getWorker(workerType);
-        return worker ? worker.getLOCS() : -1;
-    }
-
-    getBoostedBaseLOCS(workerType, boostersInGame) {
-        var worker = this.getWorker(workerType);
-        return worker ? worker.getBoostedBaseLOCS(boostersInGame) : -1;
-    }
-
-    getBoostedLOCS(workerType, boostersInGame) {
-        var worker = this.getWorker(workerType);
-        return worker ? worker.getBoostedLOCS(boostersInGame) : -1;
-    }
-
-    addCodeWorkers(workerType, noToAdd) {
-        var worker = this.getWorker(workerType);
-        if (worker) { 
-            worker.noOwned += noToAdd; 
+        if (useSeedData) {
+            workerData.forEach((wData, index) => {
+                this.workersInGame.push(new WorkerInGame(
+                    index,
+                    wData.workerType, 
+                    wData.price, 
+                    wData.locs));   
+            });
         }
+    }
+
+    getWorker(id) {
+        return this.workersInGame.find(w => w.id === id);
     }
 
     getTotalLOCS(boostersInGame) {
@@ -93,9 +56,9 @@ export class WorkersInGame {
     }
     
     clone() {
-        var clonedObj = new WorkersInGame();
+        var clonedObj = new WorkersInGame(false);
         clonedObj.workersInGame = [];
-        this.workersInGame.forEach(elem => clonedObj.workersInGame.push(new WorkerInGame(elem.workerType, elem.workerId, elem.basePrice, elem.baseLOCS, elem.noOwned)));
+        this.workersInGame.forEach(elem => clonedObj.workersInGame.push(elem));
         return clonedObj;
     }
 }

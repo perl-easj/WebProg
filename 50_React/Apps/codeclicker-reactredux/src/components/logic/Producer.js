@@ -7,13 +7,9 @@ export class ProducerBase {
 }
 
 export class ClickProducer extends ProducerBase {
-    constructor() {
-        super();
-      }
-
     locsPerActivation() {
         return Math.floor((this.activationsAllTime / locsPerClickScaler) * 
-                Math.log(Math.sqrt(this.activationsAllTime) + 1)) + 1;
+               Math.log(Math.sqrt(this.activationsAllTime) + 1)) + 1;
     }
 }
 

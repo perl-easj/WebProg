@@ -1,82 +1,54 @@
 import {boosterData} from "../data/BoosterData"
 
 export class BoosterBase {
-    constructor(boosterType, workerType, boosterNo, price, boostFactor) {
+    constructor(id, boosterType, wid, price, boostFactor) {
+        this.id = id;
         this.boosterType = boosterType;
-        this.workerType = workerType;
-        this.boosterNo = boosterNo;
+        this.wid = wid;
         this.price = price;
         this.boostFactor = boostFactor;
       }
 }
 
 export class BoosterInGame extends BoosterBase {
-    constructor(boosterType, workerType, boosterNo, price, boostFactor, owned = false) {
-        super(boosterType, workerType, boosterNo, price, boostFactor)
+    constructor(id, boosterType, wid, price, boostFactor, owned = false) {
+        super(id, boosterType, wid, price, boostFactor)
         this.owned = owned;
       }
 }
 
 export class BoostersInGame {
-    constructor() {
+    constructor(useSeedData = true) {
         this.boostersInGame = [];
-        boosterData.forEach(bData => {
-            this.boostersInGame.push(new BoosterInGame(
-                bData.boosterType, 
-                bData.workerType, 
-                bData.lid, 
-                bData.price, 
-                bData.factor));   
-        });
-    }
-
-    getBoosters(workerType) {
-        return this.boostersInGame.filter(b => b.workerType === workerType);
-    }
-
-    getActiveBoosters(workerType) {
-        return this.boostersInGame.filter(b => b.workerType === workerType && b.owned === true);
-    }
-
-    getBooster(boosterType) {
-        return this.boostersInGame.find(b => b.boosterType === boosterType);
-    }
-
-    getBoosterFromWorker(workerType, boosterNo) {
-        return this.boostersInGame.find(b => b.workerType === workerType && b.boosterNo === boosterNo);
-    }
-
-    isOwned(boosterType) {
-        var booster = this.getBooster(boosterType);
-        return booster ? booster.owned : false;
-    }
-
-    getPrice(boosterType) {
-        var booster = this.getBooster(boosterType);
-        return booster ? booster.price : -1;
-    }
-
-    getBoostFactor(boosterType) {
-        var booster = this.getBooster(boosterType);
-        return booster ? booster.boostFactor : 1;
-    }
-
-    getTotalBoostFactor(workerType) {
-        var boosters = this.getActiveBoosters(workerType);
-        return boosters ? boosters.map(b => b.boostFactor).reduce((total, factor) => {return total * factor}, 1) : 1;
-    }
-
-    addCodeBooster(boosterType) {
-        var booster = this.getBooster(boosterType);
-        if (booster) { 
-            booster.owned += true; 
+        if (useSeedData) {
+            boosterData.forEach((bData, index) => {
+                this.boostersInGame.push(new BoosterInGame(
+                    index,
+                    bData.boosterType, 
+                    bData.wid, 
+                    bData.price, 
+                    bData.factor));   
+            });
         }
+    }
+
+    getBooster(id) {
+        return this.boostersInGame.find(b => b.id === id);
+    }
+
+    getActiveBoosters(wid) {
+        return this.boostersInGame.filter(b => b.wid === wid && b.owned === true);
+    }
+
+    getTotalBoostFactor(wid) {
+        var boosters = this.getActiveBoosters(wid);
+        return boosters ? boosters.map(b => b.boostFactor).reduce((total, factor) => {return total * factor}, 1) : 1;
     }
     
     clone() {
-        var clonedObj = new BoostersInGame();
+        var clonedObj = new BoostersInGame(false);
         clonedObj.boostersInGame = [];
-        this.boostersInGame.forEach(elem => clonedObj.boostersInGame.push(new BoosterInGame(elem.boosterType, elem.workerType, elem.boosterNo, elem.price, elem.boostFactor, elem.owned)));
+        this.boostersInGame.forEach(elem => clonedObj.boostersInGame.push(elem));
         return clonedObj;
     }
 }

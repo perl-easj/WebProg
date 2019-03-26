@@ -1,30 +1,45 @@
-export const shortPriceText = (price) => {
-    if (price < 10000) {
-        return price;
-    }
-    if (price < 1000000) {
-        return Math.round(price / 1000).toString() + "k";
-    }
-
-    return Math.round(price / 1000000).toString() + "m";
+export const toText = (value, cutoffValue = 10000) => {
+    return (value < cutoffValue) ? standardNumberText(value) : abbreviatedNumberText(value, 3);
 }
 
-export const shortLOCSText = (locs) => {
-    let base = Math.floor(Math.log10(locs + 1)) + 1;
-
-    let dividerBase = base <= 6 ? 0 : (base - 1) - ((base - 1) % 3);
-    let fracDigits = base <= 6 ? 0 : 3 - ((base - 1) % 3);
-
-    let abbrev = "";
-    if (base > 6) { abbrev = "M"; }
-    if (base > 9) { abbrev = "B"; }
-    if (base > 12) { abbrev = "T"; }
-    if (base > 15) { abbrev = "10^" + base; }
-
-    return withDecimals((Math.floor(locs) / Math.pow(10, dividerBase)), fracDigits) + abbrev;
+export const toTextNoDec = (value, cutoffValue = 10000) => {
+    return (value < cutoffValue) ? standardNumberText(value, 0) : abbreviatedNumberText(value, 0);
 }
 
-export const withDecimals = (value, decimals) => {
-    return value.toLocaleString(undefined, { maximumFractionDigits: decimals })
+export const toTextFixedDecBelowCutoff = (value, decimals, cutoffValue = 10000) => {
+    return (value < cutoffValue) ? toTextWithDecimalsMinMax(value, decimals, decimals) : abbreviatedNumberText(value, 3, 4);
 }
 
+const standardNumberText = (value, maxDecimals = 1) => {
+    return toTextWithDecimalsMax(value, maxDecimals);
+}
+
+const toTextWithDecimalsMax = (value, maxDecimals) => {
+    return value.toLocaleString(undefined, { maximumFractionDigits: maxDecimals })
+}
+
+const toTextWithDecimalsMinMax = (value, minDecimals, maxDecimals) => {
+    return value.toLocaleString(undefined, { minimumFractionDigits: minDecimals, maximumFractionDigits: maxDecimals })
+}
+
+const abbreviatedNumberText = (value, absoluteMaxFracDigits, tenBaseFracDigitsCutoff = 6) => {
+    let tenBase = (value < 1) ? 0 : Math.floor(Math.log10(value));
+    let dividerBase = tenBase < 3 ? 0 : tenBase - (tenBase % 3);
+    let fracDigits = tenBase < tenBaseFracDigitsCutoff ? 0 : 3 - (tenBase % 3);
+    fracDigits = Math.min(fracDigits, absoluteMaxFracDigits);
+
+    return toTextWithDecimalsMinMax((Math.floor(value) / Math.pow(10, dividerBase)), fracDigits, fracDigits) + tenBaseToAbbreviation(tenBase);
+}
+
+const tenBaseToAbbreviation = (tenBase, cutoff = 4) => {
+    if (tenBase < cutoff) return "";
+    if (tenBase < 6) { return "k"; }
+    if (tenBase < 9) { return "M"; }
+    if (tenBase < 12) { return "B"; }
+    if (tenBase < 15) { return "T"; }
+    if (tenBase < 18) { return "Qa"; }
+    if (tenBase < 21) { return "Qi"; }
+    if (tenBase >= 21) { return "10^" + tenBase; }
+
+    return "";
+}

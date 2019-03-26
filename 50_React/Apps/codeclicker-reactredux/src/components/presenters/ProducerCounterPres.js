@@ -1,10 +1,9 @@
 import React from "react";
-import { connect } from "react-redux";
 
 import CounterPres from "./CounterPres";
 import ProducerPres from "./ProducerPres";
 
-const ProducerCounterPres = props => {
+const ProducerCounterPres = () => {
   return (
     <div className="ui segment">
       <div className="ui grid">
@@ -19,8 +18,4 @@ const ProducerCounterPres = props => {
   );
 };
 
-const mapStateToProps = state => {
-    return state;
-};
-
-export default connect(mapStateToProps)(ProducerCounterPres);
+export default ProducerCounterPres;

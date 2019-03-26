@@ -4,12 +4,12 @@ export const codeClick = () => {
     return { type: 'CODE_CLICK'};
 };
 
-export const buyWorkerClick = (workerType) => { 
-    return { type: 'BUY_WORKER', payload : workerType};
+export const buyWorkerClick = (id) => { 
+    return { type: 'BUY_WORKER', payload : id};
 };
 
-export const buyBoosterClick = (boosterType) => { 
-    return { type: 'BUY_BOOSTER', payload : boosterType};
+export const buyBoosterClick = (id) => { 
+    return { type: 'BUY_BOOSTER', payload : id};
 }; 
 
 export const tickEvent = () => { 

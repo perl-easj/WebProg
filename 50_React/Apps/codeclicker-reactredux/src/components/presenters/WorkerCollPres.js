@@ -7,7 +7,7 @@ const WorkerCollPres = ({workers}) => {
     return (
         <div className="ui segment">
             {workers.map((w, index) => {
-                return <WorkerPres workerType={w.workerType} key={index}/>
+                return <WorkerPres id={w.id} key={index}/>
             })}
         </div>
     );

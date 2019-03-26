@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 
 import { codeClick } from "../../actions";
 import { producerButtonState } from "../logic/ButtonState";
+import { toTextNoDec } from "../logic/NumbersToText";
 
 const ProducerPres = props => {
     return (
@@ -10,7 +11,7 @@ const ProducerPres = props => {
             <button
                 className={producerButtonState()}
                 onClick={() => props.codeClick()}>
-                CODE!<br/>{"x"}{props.producers.clickProducer.locsPerActivation()}
+                CODE!<br/>{"x"}{toTextNoDec(props.producers.clickProducer.locsPerActivation())}
           </button>
         </div>
     );

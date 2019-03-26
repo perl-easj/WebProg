@@ -2,37 +2,40 @@ import React from "react";
 import { connect } from "react-redux";
 
 import { buyBoosterClick } from "../../actions";
-import { shortPriceText } from "../logic/NumbersToText";
-import { withDecimals } from "../logic/NumbersToText";
+import { toText, toTextNoDec } from "../logic/NumbersToText";
 import { buyBoosterButtonState } from "../logic/ButtonState";
 import { buyBoosterButtonText } from "../logic/ButtonState";
 
 const BoosterPres = (props) => {
+    let booster = props.boosters.getBooster(props.id);
+    if (!booster) return <div>NOT FOUND</div>;
+    let boosterDesc = booster.boosterType.split(" ");
+
     return (
         <div className="ui segment">
             <div className="ui grid">
-                <div className="four wide column">
-                    <h4>{props.boosterType}</h4>                
+                <div className="three wide column">
+                    <h4>{boosterDesc[0]} <br/> {boosterDesc[1]}</h4>
                 </div>
-                <div className="nine wide column">
+                <div className="ten wide column">
                     <div>
                         <span>
-                            {withDecimals(props.boosters.getBoostFactor(props.boosterType), 1)}
+                            {toText(booster.boostFactor)}
                         </span>
                         <span>
-                            x boost for {props.boosters.getBooster(props.boosterType).workerType}
+                            x boost for {props.workers.getWorker(booster.wid).workerType}
                         </span>
                         <span>
                             <strong>
-                                {" "}({shortPriceText(props.boosters.getPrice(props.boosterType))} LOCs)
+                                {" "}({toTextNoDec(booster.price)} LOCs)
                             </strong>
                         </span>
                     </div>
                 </div>
                 <div className="three wide column">
-                    <div className={buyBoosterButtonState(props.counters.locsInBank, props.boosters.getPrice(props.boosterType), props.boosters.isOwned(props.boosterType))} 
-                        onClick={() => props.buyBoosterClick(props.boosterType)}>
-                        {buyBoosterButtonText(props.boosters.isOwned(props.boosterType))}
+                    <div className={buyBoosterButtonState(props.counters.locsInBank, booster.price, booster.owned)} 
+                         onClick={() => props.buyBoosterClick(props.id)}>
+                         {buyBoosterButtonText(booster.owned)}
                     </div>
                 </div>
             </div>
@@ -43,8 +46,9 @@ const BoosterPres = (props) => {
 const mapStateToProps = (state, ownProps) => {
     return { 
         boosters: state.boosters, 
+        workers: state.workers, 
         counters : state.counters, 
-        boosterType: ownProps.boosterType };
+        id: ownProps.id };
 };
 
 export default connect(mapStateToProps, { buyBoosterClick })(BoosterPres);

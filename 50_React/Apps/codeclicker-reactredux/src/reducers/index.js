@@ -42,7 +42,7 @@ const gameReducer = (state = initialGameState, action) => {
         newCounters = newCounters.clone();
         newWorkers = newWorkers.clone();
 
-        let targetWorker = newWorkers.workersInGame.find(elem => elem.workerType === action.payload)
+        let targetWorker = newWorkers.workersInGame.find(w => w.id === action.payload)
 
         if (targetWorker)  {
             newCounters.locsInBank -= targetWorker.getPrice(); 
@@ -55,7 +55,7 @@ const gameReducer = (state = initialGameState, action) => {
         newCounters = newCounters.clone();
         newBoosters = newBoosters.clone();
 
-        let targetBooster = newBoosters.boostersInGame.find(elem => elem.boosterType === action.payload)
+        let targetBooster = newBoosters.boostersInGame.find(b => b.id === action.payload)
 
         if (targetBooster)  { 
             newCounters.locsInBank -= targetBooster.price; 
