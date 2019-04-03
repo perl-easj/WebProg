@@ -1,0 +1,16 @@
+<div class="row" style="margin-top: 100px">
+  <div class="col-6">
+    <h2>
+      X :  <span><input type="number" [(ngModel)]="x"></span>
+    </h2> 
+    <h2>
+      Y :  <span><input type="number" [(ngModel)]="y"></span>
+    </h2>
+    <app-result [result]='res'></app-result>
+    <button class="btn btn-primary" (click)="Add()">ADD</button>
+    <button class="btn btn-success" (click)="Sub()">SUB</button>
+    <button class="btn btn-info" (click)="Mul()">MUL</button>
+    <button class="btn btn-warning" (click)="Div()">DIV</button>
+  </div>
+  <div class="col-6"></div>
+</div>
