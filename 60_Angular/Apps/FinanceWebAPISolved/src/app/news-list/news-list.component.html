@@ -1,0 +1,9 @@
+<div className="container">
+  <div className="list-group">
+    <div className="item" *ngFor="let newsItem of newsList">
+      <h3>{{newsItem.headline}}  ({{newsItem.source}})</h3>
+      <p>{{newsItem.summary}}</p>
+      <br>
+    </div>
+  </div>
+</div>

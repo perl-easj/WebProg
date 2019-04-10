@@ -1,0 +1,20 @@
+<div class="container">
+  <div *ngIf="movie">
+    <div class="row">
+      <div class="col-md-4">
+        <img class="responsive rounded poster" src={{movie.Poster}}>
+      </div>
+      <div class="col-md-5">
+        <h1>Movie:</h1>
+        <b>Title:</b> {{movie.Title}}<br>
+        <b>Year:</b> {{movie.Year}}<br>
+        <b>Genre:</b> {{movie.Genre}}<br>
+        <b>Actors:</b> {{movie.Actors}}<br><br>
+        <h4>Plot:</h4> {{movie.Plot}}<br><br>
+        <p>
+        <button (click)="gotoMovies()">Back</button>
+      </p>
+      </div>
+      <div class="col-md-3"></div>
+  </div>
+</div>

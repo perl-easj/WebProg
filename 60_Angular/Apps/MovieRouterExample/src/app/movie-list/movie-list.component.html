@@ -1,0 +1,6 @@
+<h2>Movie list:</h2>
+<ul class="list-group">
+  <li *ngFor="let movie of movies" class="list-group-item" (click)="onSelect(movie)">
+    <span>{{movie.Title}} </span>{{movie.Year}}
+  </li>
+</ul>

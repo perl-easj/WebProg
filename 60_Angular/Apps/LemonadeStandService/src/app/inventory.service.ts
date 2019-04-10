@@ -4,8 +4,8 @@ import { Injectable, EventEmitter } from '@angular/core';
   providedIn: 'root'
 })
 export class InventoryService {
-  private priceOfLemon: number = 3;
-  private priceOfLemonade: number = 5;
+  priceOfLemon: number = 3;
+  priceOfLemonade: number = 5;
 
   noOfLemons: number;
   noOfCash: number;

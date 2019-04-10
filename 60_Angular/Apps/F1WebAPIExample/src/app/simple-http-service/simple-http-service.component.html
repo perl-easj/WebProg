@@ -1,0 +1,12 @@
+<div style="margin: 20px;">
+  <h1>F1 Drivers in 2019:</h1>
+  <div>
+    <ul class="list-group">
+      <li *ngFor="let driver of drivers" class="list-group-item">
+        <h4>{{driver.givenName}} {{driver.familyName}}
+          <small>Born: {{driver.dateOfBirth}}, {{driver.nationality}}</small>
+        </h4>
+      </li>
+    </ul>
+  </div>
+</div>

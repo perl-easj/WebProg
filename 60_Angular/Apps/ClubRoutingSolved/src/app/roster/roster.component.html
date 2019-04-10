@@ -1,0 +1,5 @@
+<div className="container">
+  <div className="list-group">
+    <h3 className="item" *ngFor="let p of players" (click)="onSelect(p)">#{{p.no}} {{p.name}} ({{p.position}})</h3>
+  </div>
+</div>
